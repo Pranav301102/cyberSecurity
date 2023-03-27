@@ -5,4 +5,4 @@ datetime
 requests
 pymongo
 fastapi[all]
-ssl
+
