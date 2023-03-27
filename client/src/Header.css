@@ -1,0 +1,112 @@
+body {
+    background-color: black;
+    height: 100vh;
+    margin: 0rem;
+    overflow: hidden; 
+  }
+  
+  @keyframes rotate {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+  #blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, aquamarine, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+  }
+  
+  #blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(12vmax);
+  }
+  
+  h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(3rem, 10vw, 10rem);
+    color: white;
+    padding: 0rem clamp(1rem, 2vw, 3rem);
+    border-radius: clamp(0.4rem, 0.75vw, 1rem);
+    margin: 0rem;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    translate: -50% -50%;
+    z-index: 3;
+  }
+  
+body{
+    margin:0;
+    padding:0;
+    background: #000;
+  }
+  
+  .search{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    z-index: 3;
+
+  }
+  .search:hover > .search-txt{
+    width:240px;
+    padding:0 6px;
+    z-index: 3;
+}
+  
+   
+  .search-btn{
+    color: #000;
+    float: right;
+    width: 40px;
+    height:40px;
+    border-radius: 50px;
+    background: #fff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+  }
+  
+  
+  
+  .search-txt{
+    border:none;
+    background:none;
+    outline:none;
+    float:left;
+    padding:0;
+    color:white;
+    font-size:16px;
+    transition:0.4s;
+    line-height: 40px;
+    width:0px;
+    z-index: 3;
+  }
+  
+  
