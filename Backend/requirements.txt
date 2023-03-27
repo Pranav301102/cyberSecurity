@@ -1,0 +1,8 @@
+pythonping
+python-nmap
+boto3
+datetime
+requests
+pymongo
+fastapi[all]
+ssl

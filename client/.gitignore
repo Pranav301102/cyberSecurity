@@ -1,0 +1,8 @@
+# gitignore for the project
+# ignore all files in the build directory and node_modules
+
+build
+node_modules
+
+
+
