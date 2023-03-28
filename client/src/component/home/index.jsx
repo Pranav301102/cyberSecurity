@@ -9,7 +9,8 @@ function Home() {
         const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
         let interval = null;
-        
+        //disable scrolling for the page
+        document.body.style.overflow = "hidden";
         document.querySelector("h1").onmouseover = event => {  
           let iteration = 0;
           

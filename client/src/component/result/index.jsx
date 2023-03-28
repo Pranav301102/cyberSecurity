@@ -8,6 +8,8 @@ import axios from "axios";
 function Domain() {
   const [searchParams, setSearchParams] = useSearchParams();
   const domainName = searchParams.get("domain");
+  document.body.style.overflowY = "scroll";
+  document.body.style.overflowX = "hidden";
   return (
     <div className="result-container">
       <h1>Results</h1>
