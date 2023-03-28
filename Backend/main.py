@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from bson.objectid import ObjectId
+from fastapi.middleware.cors import CORSMiddleware
 import threading
 import mongo
 import fooAudit
@@ -9,6 +10,14 @@ import subdomainAudit
 
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 mongo.init()
 

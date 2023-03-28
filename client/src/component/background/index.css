@@ -1,9 +1,6 @@
 body {
     background-color: black;
-    height: 100vh;
-    margin: 0rem;
-    overflow: hidden; 
-  }
+}
   
   @keyframes rotate {
     from {
@@ -34,12 +31,20 @@ body {
   }
   
   #blur {
-    height: 100%;
+    height: auto;
+    min-height: 200vh;
     width: 100%;
     position: absolute;
     z-index: 2;
     backdrop-filter: blur(12vmax);
   }
+
+.background{
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+}
   
 
 

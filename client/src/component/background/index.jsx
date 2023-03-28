@@ -39,7 +39,7 @@ function Background() {
 
 
   return (
-    <div >
+    <div className='background'>
       <div id="blob"></div>
       <div id="blur"></div>
     </div>
