@@ -1,0 +1,20 @@
+h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(3rem, 10vw, 10rem);
+    color: white;
+    white-space: nowrap;
+    padding: 0rem clamp(1rem, 2vw, 3rem);
+    border-radius: clamp(0.4rem, 0.75vw, 1rem);
+    margin: 0rem;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    translate: -50% -50%;
+    z-index: 4;
+  }
+  
+  h1:hover {
+    color: white;
+  }
+  
+  
