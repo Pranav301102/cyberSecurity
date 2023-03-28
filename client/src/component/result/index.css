@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+
 .result-container{
     z-index: 4;
     position: absolute;
@@ -8,7 +11,7 @@
 }
 
 h1{
-    font-family: 'Space Mono', monospace;
+    font-family: monospace;
     font-size: clamp(2rem, 8vw, 8rem);
     color: white;
     white-space: nowrap;
@@ -19,7 +22,7 @@ h1{
 }
 
 h2{
-    font-family: 'Space Mono', monospace;
+    font-family: monospace;
     font-size: clamp(0.5rem, 5vw, 4rem);
     color: white;
     white-space: nowrap;
