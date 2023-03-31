@@ -7,7 +7,7 @@ import fooAudit
 import pingAudit
 import osAudit
 import subdomainAudit
-import tracerouteAudit
+import traceRouteAudit
 import sslAudit
 import portScanAudit
 import ReverseDNS
@@ -148,7 +148,7 @@ async def queue_ping(domain: str):
     }
     saved_foo = mongo.db.foo.insert_one(new_foo)
 
-    threading.Thread(target=tracerouteAudit.audit, args=(
+    threading.Thread(target=traceRouteAudit.audit, args=(
         new_foo, saved_foo.inserted_id)).start()
 
     return {"requestId": str(saved_foo.inserted_id)}

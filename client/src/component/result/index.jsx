@@ -24,6 +24,31 @@ function Domain() {
         domainName={domainName}
         query={"queue-subdomain"}
       />
+      <ResultCard
+        title={"SSL Audit"}
+        domainName={domainName}
+        query={"queue-ssl"}
+      />
+      <ResultCard
+        title={"OS Audit"}
+        domainName={domainName}
+        query={"queue-os"}
+      />
+      <ResultCard
+        title={"TraceRoute"}
+        domainName={domainName}
+        query={"queue-traceroute"}
+      />
+      <ResultCard
+        title={"Port Scan"}
+        domainName={domainName}
+        query={"queue-portscan"}
+      />
+      <ResultCard
+        title={"Reverse DNS"}
+        domainName={domainName}
+        query={"queue-reversedns"}
+      />
     </div>
   );
 }
