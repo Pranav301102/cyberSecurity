@@ -7,6 +7,10 @@ import fooAudit
 import pingAudit
 import osAudit
 import subdomainAudit
+import tracerouteAudit
+import sslAudit
+import portScanAudit
+import ReverseDNS
 
 
 app = FastAPI()
@@ -45,6 +49,23 @@ async def queue_foo(domain: str):
 
     return {"requestId": str(saved_foo.inserted_id)}
 
+#reverse dns audit
+@app.get("/queue-reversedns")
+async def queue_ping(domain: str):
+    new_foo = {
+        "type": "reversedns",
+        "domain": domain,
+        "completed": False,
+        "error": False,
+        "result": ""
+    }
+    saved_foo = mongo.db.foo.insert_one(new_foo)
+
+    threading.Thread(target=ReverseDNS.audit, args=(
+        new_foo, saved_foo.inserted_id)).start()
+
+    return {"requestId": str(saved_foo.inserted_id)}
+
 
 # ping audit
 @app.get("/queue-ping")
@@ -63,6 +84,40 @@ async def queue_ping(domain: str):
 
     return {"requestId": str(saved_foo.inserted_id)}
 
+#ssl audit
+@app.get("/queue-ssl")
+async def queue_ping(domain: str):
+    new_foo = {
+        "type": "ssl",
+        "domain": domain,
+        "completed": False,
+        "error": False,
+        "result": ""
+    }
+    saved_foo = mongo.db.foo.insert_one(new_foo)
+
+    threading.Thread(target=sslAudit.audit, args=(
+        new_foo, saved_foo.inserted_id)).start()
+
+    return {"requestId": str(saved_foo.inserted_id)}
+
+#port scan audit
+@app.get("/queue-portscan")
+async def queue_ping(domain: str):
+    new_foo = {
+        "type": "portscan",
+        "domain": domain,
+        "completed": False,
+        "error": False,
+        "result": ""
+    }
+    saved_foo = mongo.db.foo.insert_one(new_foo)
+
+    threading.Thread(target=portScanAudit.audit, args=(
+        new_foo, saved_foo.inserted_id)).start()
+
+    return {"requestId": str(saved_foo.inserted_id)}
+
 
 # os audit
 @app.get("/queue-os")
@@ -77,6 +132,23 @@ async def queue_ping(domain: str):
     saved_foo = mongo.db.foo.insert_one(new_foo)
 
     threading.Thread(target=osAudit.audit, args=(
+        new_foo, saved_foo.inserted_id)).start()
+
+    return {"requestId": str(saved_foo.inserted_id)}
+
+#traceroute audit
+@app.get("/queue-traceroute")
+async def queue_ping(domain: str):
+    new_foo = {
+        "type": "traceroute",
+        "domain": domain,
+        "completed": False,
+        "error": False,
+        "result": ""
+    }
+    saved_foo = mongo.db.foo.insert_one(new_foo)
+
+    threading.Thread(target=tracerouteAudit.audit, args=(
         new_foo, saved_foo.inserted_id)).start()
 
     return {"requestId": str(saved_foo.inserted_id)}
