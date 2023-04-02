@@ -24,7 +24,7 @@ const handleClick = () => {
   return (
     <div className="search">
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-            <input type="text" className="search-txt" name="" placeholder="Enter your IP address" onChange={(e)=>setInput(e.target.value) }/>
+            <input type="text" className="search-txt" name="" placeholder="Enter domain name" onChange={(e)=>setInput(e.target.value) }/>
             <button className="search-btn" onClick={handleClick}><i className="fa fa-search"></i></button>
     </div>   
   )
