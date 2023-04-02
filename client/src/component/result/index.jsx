@@ -15,22 +15,22 @@ function Domain() {
       <h1>Results</h1>
       <h2>Domain Name:{domainName}</h2>
       <ResultCard
-        title={"Ping Audit"}
+        title={"Ping Test"}
         domainName={domainName}
         query={"queue-ping"}
       />
       <ResultCard
-        title={"Subdomain Audit"}
+        title={"Subdomain List"}
         domainName={domainName}
         query={"queue-subdomain"}
       />
       <ResultCard
-        title={"SSL Audit"}
+        title={"SSL Test"}
         domainName={domainName}
         query={"queue-ssl"}
       />
       <ResultCard
-        title={"OS Audit"}
+        title={"OS Probe"}
         domainName={domainName}
         query={"queue-os"}
       />
