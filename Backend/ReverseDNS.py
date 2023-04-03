@@ -3,8 +3,9 @@ import os
 import subprocess
 import mongo
 print("\n-----------Reverse DNS Scanner Started-----------\n")
-def reverse_dns(hostname, hostip):
+def reverse_dns(hostname):
   try:
+    hostip = socket.gethostbyname(hostname.strip())
     hehe1 = "Domain Name: "+hostname
     hehe2 = "IP Address: "+hostip
 

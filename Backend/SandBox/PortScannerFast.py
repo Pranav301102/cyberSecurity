@@ -40,7 +40,7 @@ def scanner(hostname):
                     hehe = (f'{port}')
                     result.append(hehe)
         return(result)
-    return(port_scan(host, port))
+    return('\n'.join(f"{i[0]+1}) {i[1]}" for i in enumerate(port_scan(host, port))))
 
 
 def audit(foo, id):

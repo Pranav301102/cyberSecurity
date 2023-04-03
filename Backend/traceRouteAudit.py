@@ -1,17 +1,34 @@
+import sys
+import scapy.all as scapy
+import os
+import subprocess
 import mongo
-import time
 
 
-# define a function like this to be called inside the audit function
-def trace_route(domain):
-    # placeholder
-    time.sleep(10)
+print(f"\n-----------Traceroute Scan Started-----------\n")
 
-    return domain + " pinged successfully"
+
+def traceroute(target):
+    print(target)
+    if len(sys.argv) == 2:
+        target = sys.argv[1]
+
+    ans, unans = scapy.sr(scapy.IP(dst=target, ttl=(
+        1, 22), id=scapy.RandShort())/scapy.TCP(flags=0x2), timeout=10)
+
+    result = []
+    for snd, rcv in ans:
+        if isinstance(rcv.payload, scapy.TCP):
+            rambo = "(TCP)"
+        else:
+            rambo = ""
+        hehe = str(snd.ttl) + ". " + str(rcv.src) + " " + str(rambo)
+        result.append(hehe)
+    return('\n'.join(result))
 
 
 def audit(foo, id):
-    result = trace_route(foo['domain'])
+    result = traceroute(foo['domain'])
 
     # updating in db
     mongo.db.foo.update_one(
@@ -19,4 +36,4 @@ def audit(foo, id):
 
 
 if __name__ == '__main__':
-    print(trace_route('google.com'))
+    print(traceroute('google.com'))
