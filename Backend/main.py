@@ -49,7 +49,9 @@ async def queue_foo(domain: str):
 
     return {"requestId": str(saved_foo.inserted_id)}
 
-#reverse dns audit
+# reverse dns audit
+
+
 @app.get("/queue-reversedns")
 async def queue_ping(domain: str):
     new_foo = {
@@ -84,7 +86,9 @@ async def queue_ping(domain: str):
 
     return {"requestId": str(saved_foo.inserted_id)}
 
-#ssl audit
+# ssl audit
+
+
 @app.get("/queue-ssl")
 async def queue_ping(domain: str):
     new_foo = {
@@ -101,7 +105,9 @@ async def queue_ping(domain: str):
 
     return {"requestId": str(saved_foo.inserted_id)}
 
-#port scan audit
+# port scan audit
+
+
 @app.get("/queue-portscan")
 async def queue_ping(domain: str):
     new_foo = {
@@ -136,7 +142,9 @@ async def queue_ping(domain: str):
 
     return {"requestId": str(saved_foo.inserted_id)}
 
-#traceroute audit
+# traceroute audit
+
+
 @app.get("/queue-traceroute")
 async def queue_ping(domain: str):
     new_foo = {
@@ -159,6 +167,24 @@ async def queue_ping(domain: str):
 async def queue_ping(domain: str):
     new_foo = {
         "type": "subdomain",
+        "domain": domain,
+        "completed": False,
+        "error": False,
+        "result": ""
+    }
+    saved_foo = mongo.db.foo.insert_one(new_foo)
+
+    threading.Thread(target=subdomainAudit.audit, args=(
+        new_foo, saved_foo.inserted_id)).start()
+
+    return {"requestId": str(saved_foo.inserted_id)}
+
+
+# mongodb audit
+@app.get("/queue-mongodb")
+async def queue_ping(domain: str):
+    new_foo = {
+        "type": "mongodb",
         "domain": domain,
         "completed": False,
         "error": False,
